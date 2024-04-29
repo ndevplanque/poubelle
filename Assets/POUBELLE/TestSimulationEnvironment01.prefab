@@ -444,7 +444,7 @@ GameObject:
   - component: {fileID: 5274862046073070217}
   - component: {fileID: 7505790926083336837}
   m_Layer: 0
-  m_Name: Quad
+  m_Name: QR-CODE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
