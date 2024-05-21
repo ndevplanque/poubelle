@@ -63,4 +63,18 @@ public class MoveToPoints : MonoBehaviour
             targetRenderer.material.color = originalColor;
         }
     }
+    
+    public void SetNewDestination(Transform newTargetPoint)
+    {
+        if (newTargetPoint != null)
+        {
+            targetPoint = newTargetPoint;
+            agent.SetDestination(targetPoint.position);
+        }
+        else
+        {
+            Debug.LogError("Target point not assigned!");
+        }
+    }
+
 }

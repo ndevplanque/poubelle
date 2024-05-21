@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.AI.Navigation;
 using UnityEngine;
 
 using UnityEngine.XR.ARFoundation;
@@ -8,9 +9,16 @@ using UnityEngine.XR.ARSubsystems;
 public class ImageTracker : MonoBehaviour
 {
     private ARTrackedImageManager trackedImages;
+    private MoveToPoints truckMovement;
     public GameObject[] ArPrefabs;
 
     List<GameObject> ARObjects = new List<GameObject>();
+
+    void Start()  
+    {  
+        // Assurez-vous que l'agent est attaché à votre camion.
+        truckMovement = GameObject.Find("Truck").GetComponent<MoveToPoints>();
+    }
 
     
     void Awake()
@@ -40,6 +48,19 @@ public class ImageTracker : MonoBehaviour
                 if(trackedImage.referenceImage.name == arPrefab.name)
                 {
                     var newPrefab = Instantiate(arPrefab, trackedImage.transform);
+                    
+                    // Build the NavMesh
+                    NavMeshSurface surface = newPrefab.GetComponent<NavMeshSurface>();
+                    if (surface != null)
+                    {
+                        surface.BuildNavMesh();
+                    }
+                    
+                    // Définissez le nouveau point pour que le camion y aille.
+                    // Vous devez ajuster la position selon vos besoins.
+                    Transform newTargetPoint = newPrefab.transform;
+                    truckMovement.SetNewDestination(newTargetPoint);
+                    
                     ARObjects.Add(newPrefab);
                 }
             }
