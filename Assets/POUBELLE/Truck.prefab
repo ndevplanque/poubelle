@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3396751403535550273
+--- !u!1 &4366111246946473595
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,13 +8,12 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3069686556959310421}
-  - component: {fileID: 7904052979437741430}
-  - component: {fileID: 5369103850139879470}
-  - component: {fileID: 3327215085975391832}
-  - component: {fileID: 6278363600638233820}
-  - component: {fileID: 8146044911217840216}
-  - component: {fileID: 3974485275110449497}
+  - component: {fileID: 455871458772723105}
+  - component: {fileID: 3146956302249775573}
+  - component: {fileID: 9019117328609454917}
+  - component: {fileID: 383063455119035304}
+  - component: {fileID: 9219844709088851794}
+  - component: {fileID: 253024936135554949}
   m_Layer: 8
   m_Name: Truck
   m_TagString: Untagged
@@ -22,13 +21,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3069686556959310421
+--- !u!4 &455871458772723105
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3396751403535550273}
+  m_GameObject: {fileID: 4366111246946473595}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.74, y: 0, z: -0}
@@ -37,21 +36,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &7904052979437741430
+--- !u!33 &3146956302249775573
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3396751403535550273}
+  m_GameObject: {fileID: 4366111246946473595}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &5369103850139879470
+--- !u!23 &9019117328609454917
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3396751403535550273}
+  m_GameObject: {fileID: 4366111246946473595}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -87,13 +86,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3327215085975391832
+--- !u!65 &383063455119035304
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3396751403535550273}
+  m_GameObject: {fileID: 4366111246946473595}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -108,13 +107,13 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!195 &6278363600638233820
+--- !u!195 &9219844709088851794
 NavMeshAgent:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3396751403535550273}
+  m_GameObject: {fileID: 4366111246946473595}
   m_Enabled: 1
   m_AgentTypeID: -334000983
   m_Radius: 0.5
@@ -130,30 +129,16 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &8146044911217840216
+--- !u!114 &253024936135554949
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3396751403535550273}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 261a475faa0ae4322bb50a4ce0450f23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3974485275110449497
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3396751403535550273}
+  m_GameObject: {fileID: 4366111246946473595}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20825cb1fd36145618930d0afeeecbdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   targetPoint: {fileID: 0}
-  closeColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  closeDistance: 1
