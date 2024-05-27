@@ -1,58 +1,64 @@
-using System.Collections.Generic;  
-using UnityEngine;  
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.AI;
 
-public class MoveToPoints : MonoBehaviour  
-{  
-    private NavMeshAgent agent;  
-    private List<Transform> targetPoints = new List<Transform>();
-    private int currentTargetIndex = 0;
+public class MoveToPoints : MonoBehaviour
+{
+    [SerializeField] public float agentSpeed = 1.0f; // Adjust speed as needed
 
-    private void Start()  
-    {  
-        // Get reference to the NavMeshAgent component attached to this GameObject  
+    private NavMeshAgent agent;
+    private int currentTargetIndex;
+    private List<TrashBin> targetPoints = new();
+
+    private void Start()
+    {
         agent = GetComponent<NavMeshAgent>();
-
-        // Check if the NavMeshAgent component exists  
-        if (agent == null)  
-        {  
-            Debug.LogError("NavMeshAgent component not found!");  
-            enabled = false; // Disable this script  
-            return;  
+        if (agent == null)
+        {
+            Debug.LogError("NavMeshAgent component not found!");
+            enabled = false;
+            return;
         }
+
+        agent.speed = agentSpeed;
     }
 
     private void Update()
     {
-        // Check if the agent has reached its current destination
         if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
-        {
             if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f)
             {
-                // Move to the next target point
-                NextTarget();
+                if (targetPoints.Count == 0) return;
+
+                var currentBin = targetPoints[currentTargetIndex];
+                if (!currentBin.isEmpty)
+                {
+                    currentBin.EmptyBin();
+                    // Move to the next target point
+                    NextTarget();
+                }
             }
-        }
     }
 
-    public void SetNewDestinations(List<Transform> newTargetPoints)  
-    {  
-        if (newTargetPoints != null && newTargetPoints.Count > 0)  
-        {  
-            targetPoints = newTargetPoints;  
+    public void SetNewDestinations(List<TrashBin> newTargetPoints)
+    {
+        if (newTargetPoints != null && newTargetPoints.Count > 0)
+        {
+            targetPoints = newTargetPoints;
             currentTargetIndex = 0;
-            agent.SetDestination(targetPoints[currentTargetIndex].position);  
-        }  
-        else  
-        {  
-            Debug.LogError("Target points list is empty or null!");  
-        }  
+            agent.SetDestination(targetPoints[currentTargetIndex].transform.position);
+        }
+        else
+        {
+            Debug.LogError("Target points list is empty or null!");
+        }
     }
 
     private void NextTarget()
     {
-        // Cycle to the next target point
+        if (targetPoints.Count == 0) return;
+
         currentTargetIndex = (currentTargetIndex + 1) % targetPoints.Count;
-        agent.SetDestination(targetPoints[currentTargetIndex].position);
+        agent.SetDestination(targetPoints[currentTargetIndex].transform.position);
     }
 }

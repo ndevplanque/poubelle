@@ -308,7 +308,7 @@ MonoBehaviour:
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 1073741879
+    m_Bits: 4294967295
   m_UseGeometry: 1
   m_DefaultArea: 0
   m_GenerateLinks: 0
@@ -319,7 +319,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.016666668
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 8bcb7f8c99b8b46a4b70a315c38d3f22, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: db5b76dce721745ffb8a3011ea7ea158, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &3608326750689100134
 GameObject:
@@ -479,6 +479,7 @@ GameObject:
   - component: {fileID: 5719725984560076389}
   - component: {fileID: 7654972525912386126}
   - component: {fileID: 1705103821068052234}
+  - component: {fileID: 8080998312918308833}
   m_Layer: 9
   m_Name: Trash
   m_TagString: Trash
@@ -495,8 +496,8 @@ Transform:
   m_GameObject: {fileID: 4974007514013724763}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.67, y: 0, z: 1.68}
-  m_LocalScale: {x: 0.3386, y: 1, z: 0.3018}
+  m_LocalPosition: {x: -3.64, y: 5, z: 3.03}
+  m_LocalScale: {x: 0.3, y: 10, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8205461775143794950}
@@ -572,6 +573,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8080998312918308833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4974007514013724763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baae41362e9fb4da1bab1e43e0f96cb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isEmpty: 0
 --- !u!1 &6242743106724126465
 GameObject:
   m_ObjectHideFlags: 0
@@ -657,6 +671,7 @@ GameObject:
   - component: {fileID: 5474506168542858918}
   - component: {fileID: 3427058117400731976}
   - component: {fileID: 5899867868533093813}
+  - component: {fileID: 7161766247525037885}
   m_Layer: 9
   m_Name: Trash
   m_TagString: Trash
@@ -673,8 +688,8 @@ Transform:
   m_GameObject: {fileID: 6475359049595058602}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.47, y: 0, z: -2.42}
-  m_LocalScale: {x: 0.33859998, y: 1, z: 0.30179998}
+  m_LocalPosition: {x: 4.3, y: 5, z: -1.67}
+  m_LocalScale: {x: 0.3, y: 10, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8205461775143794950}
@@ -750,6 +765,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7161766247525037885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6475359049595058602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baae41362e9fb4da1bab1e43e0f96cb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isEmpty: 0
 --- !u!1 &6812848636031816397
 GameObject:
   m_ObjectHideFlags: 0
@@ -850,9 +878,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6929071808503534696}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.01, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7385987978793678243}
