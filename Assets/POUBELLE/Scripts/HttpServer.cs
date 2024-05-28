@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Net;
 using System.Text;
 using System.Threading;
@@ -27,17 +28,21 @@ public class HttpServer : MonoBehaviour
         {
             try
             {
-                var context = listener.GetContext();
-                var request = context.Request;
-                var response = context.Response;
+            	var context = listener.GetContext();
+               	var request = context.Request;
+				var response = context.Response;
 
-                // Determine the requested route and handle accordingly
-                string responseString = HandleRequest(request.Url.AbsolutePath);
-                byte[] buffer = Encoding.UTF8.GetBytes(responseString);
-                response.ContentLength64 = buffer.Length;
-                var output = response.OutputStream;
-                output.Write(buffer, 0, buffer.Length);
-                output.Close();
+			   	switch (request.Url.AbsolutePath)
+				{
+					case "/init":
+						if (request.HttpMethod == "POST") HandleInit(request, response);
+						else Send(response, HttpStatusCode.BadRequest, "Invalid method");
+						break;
+
+					default:
+						Send(response, HttpStatusCode.NotFound, "Not found");
+						break;
+				}
             }
             catch (HttpListenerException ex)
             {
@@ -47,22 +52,6 @@ public class HttpServer : MonoBehaviour
             {
                 Debug.LogError($"Exception: {ex.Message}");
             }
-        }
-    }
-
-    private string HandleRequest(string path)
-    {
-        switch (path)
-        {
-            case "/":
-                return "<html><body>Home Page</body></html>";
-
-            case "/init":
-                // Your /init route handling logic here
-                return "<html><body>Initialization Route</body></html>";
-
-            default:
-                return "<html><body>404 Not Found</body></html>";
         }
     }
 
@@ -78,5 +67,26 @@ public class HttpServer : MonoBehaviour
             listenerThread.Abort();
         }
     }
+
+	private void HandleInit(HttpListenerRequest request, HttpListenerResponse response)
+	{
+		using (var reader = new StreamReader(request.InputStream, request.ContentEncoding))
+		{
+			string body = reader.ReadToEnd();
+			Debug.Log($"Received: {body}");
+			
+			Send(response, HttpStatusCode.OK, "ok");
+		}
+	}
+
+	private void Send(HttpListenerResponse response, HttpStatusCode code, string body="")
+	{
+		byte[] buffer = Encoding.UTF8.GetBytes(body);
+		response.ContentLength64 = buffer.Length;
+		response.StatusCode = (int) code;
+		var output = response.OutputStream;
+		output.Write(buffer, 0, buffer.Length);
+		output.Close();
+	}	
 }
 
