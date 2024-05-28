@@ -17,7 +17,6 @@ public class MoveToPoints : MonoBehaviour
         {
             Debug.LogError("NavMeshAgent component not found!");
             enabled = false;
-            return;
         }
 
         // agent.speed = agentSpeed;
@@ -42,7 +41,6 @@ public class MoveToPoints : MonoBehaviour
 
     public void SetNewDestinations(List<TrashBin> newTargetPoints)
     {
-        
         if (newTargetPoints != null && newTargetPoints.Count > 0)
         {
             targetPoints = newTargetPoints;

@@ -11,7 +11,7 @@ public class ImageTracker : MonoBehaviour
 
     private readonly List<GameObject> ARObjects = new();
     private ARTrackedImageManager trackedImages;
-    private bool truckInitialized; // To track if the truck is already initialized
+    private bool truckInitialized;
     private MoveToPoints truckMovement;
 
     private void Awake()
@@ -35,32 +35,29 @@ public class ImageTracker : MonoBehaviour
         foreach (var arPrefab in ArPrefabs)
             if (trackedImage.referenceImage.name == arPrefab.name)
             {
+                Debug.Log("Trackable image found: " + trackedImage.referenceImage.name);
                 var newPrefab = Instantiate(arPrefab, trackedImage.transform);
 
                 // Build the NavMesh
-                var surface = newPrefab.GetComponent<NavMeshSurface>();
-                if (surface != null)
-                    surface.BuildNavMesh();
+                newPrefab.GetComponent<NavMeshSurface>()?.BuildNavMesh();
 
                 var trashBins = FindAllTrashObjects(newPrefab);
                 foreach (var bin in trashBins) bin.OnStateChanged += HandleBinStateChanged;
 
                 ARObjects.Add(newPrefab);
 
-                // Initialize the truck only when the first tracked prefab is added
+                // Initialize the truck only when the first tracked prefab is added  
                 if (!truckInitialized)
                 {
                     InitializeTruck(newPrefab);
                     truckInitialized = true;
                 }
-
-                // if (trashBins.Count > 0) truckMovement.SetNewDestinations(trashBins.FindAll(bin => !bin.isEmpty));
             }
 
         foreach (var trackedImage in eventArgs.updated)
-        foreach (var gameObject in ARObjects)
-            if (gameObject.name == trackedImage.referenceImage.name)
-                gameObject.SetActive(trackedImage.trackingState == TrackingState.Tracking);
+        foreach (var arObject in ARObjects)
+            if (arObject.name == trackedImage.referenceImage.name)
+                arObject.SetActive(trackedImage.trackingState == TrackingState.Tracking);
     }
 
     private void InitializeTruck(GameObject parentObject)
@@ -69,28 +66,32 @@ public class ImageTracker : MonoBehaviour
         var truckInstance = Instantiate(Truck, parentObject.transform.position, parentObject.transform.rotation);
         truckMovement = truckInstance.GetComponent<MoveToPoints>();
 
-        // Set initial destinations for the truck
+        // Set initial destinations for the truck  
         var bins = FindAllTrashObjects(parentObject);
         truckMovement.SetNewDestinations(bins.FindAll(bin => !bin.isEmpty));
     }
 
-    // Function to search for all TrashBin objects
+    // Function to search for all TrashBin objects recursively  
     private List<TrashBin> FindAllTrashObjects(GameObject parentObject)
     {
         var trashBins = new List<TrashBin>();
-        foreach (Transform child in parentObject.transform)
+        var queue = new Queue<Transform>();
+        queue.Enqueue(parentObject.transform);
+
+        while (queue.Count > 0)
         {
-            var trashBin = child.GetComponent<TrashBin>();
-            if (trashBin != null)
-                trashBins.Add(trashBin);
-            else
-                trashBins.AddRange(FindAllTrashObjects(child.gameObject));
+            var current = queue.Dequeue();
+            var trashBin = current.GetComponent<TrashBin>();
+
+            if (trashBin != null) trashBins.Add(trashBin);
+
+            foreach (Transform child in current) queue.Enqueue(child);
         }
 
         return trashBins;
     }
 
-    // Event handler for bin state changes
+    // Event handler for bin state changes  
     private void HandleBinStateChanged(TrashBin bin)
     {
         var bins = FindAllTrashObjects(gameObject);

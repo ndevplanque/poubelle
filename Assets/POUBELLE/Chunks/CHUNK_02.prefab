@@ -269,7 +269,7 @@ GameObject:
   - component: {fileID: 7385987978793678243}
   - component: {fileID: 4223904710406933856}
   m_Layer: 0
-  m_Name: CHUNK01_NavMesh
+  m_Name: CHUNK02_NavMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -319,7 +319,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.016666668
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 8bcb7f8c99b8b46a4b70a315c38d3f22, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 6851d62a0c9334ba38570b1da59f21f8, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &3608326750689100134
 GameObject:
@@ -626,7 +626,7 @@ GameObject:
   - component: {fileID: 2194673372346606796}
   - component: {fileID: 4163753681180453149}
   m_Layer: 0
-  m_Name: CHUNK_01
+  m_Name: CHUNK_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -679,7 +679,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8db669e9b0f2947b3a8369223ba710f3, type: 2}
+  - {fileID: 2100000, guid: 116a6ac4155aa4ccaa97ffdd267fd32b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
