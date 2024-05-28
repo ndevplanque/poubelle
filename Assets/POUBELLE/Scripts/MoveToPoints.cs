@@ -4,7 +4,7 @@ using UnityEngine.AI;
 
 public class MoveToPoints : MonoBehaviour
 {
-    [SerializeField] public float agentSpeed = 1.0f; // Adjust speed as needed
+    // [SerializeField] public float agentSpeed = 1.0f; // Adjust speed as needed
 
     private NavMeshAgent agent;
     private int currentTargetIndex;
@@ -20,7 +20,7 @@ public class MoveToPoints : MonoBehaviour
             return;
         }
 
-        agent.speed = agentSpeed;
+        // agent.speed = agentSpeed;
     }
 
     private void Update()
@@ -42,10 +42,12 @@ public class MoveToPoints : MonoBehaviour
 
     public void SetNewDestinations(List<TrashBin> newTargetPoints)
     {
+        
         if (newTargetPoints != null && newTargetPoints.Count > 0)
         {
             targetPoints = newTargetPoints;
             currentTargetIndex = 0;
+            if (agent == null) return;
             agent.SetDestination(targetPoints[currentTargetIndex].transform.position);
         }
         else

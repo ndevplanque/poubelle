@@ -6,24 +6,36 @@ public class TrashBin : MonoBehaviour
 {
     public bool isEmpty;
     private Renderer binRenderer;
+    [SerializeField]
+    private Material fullBinMaterial;
+    [SerializeField]
+    private Material emptyBinMaterial;
 
     private void Start()
     {
         binRenderer = GetComponent<Renderer>();
-        UpdateColor();
+        UpdateMaterial();
     }
 
     public event Action<TrashBin> OnStateChanged;
 
-    public void UpdateColor()
+    public void UpdateMaterial()
     {
-        binRenderer.material.color = isEmpty ? Color.red : Color.green;
+        binRenderer.material = isEmpty ? emptyBinMaterial : fullBinMaterial;
+        foreach (Transform child in transform)
+        {
+            var childRenderer = child.GetComponent<Renderer>();
+            if (childRenderer != null)
+            {
+                childRenderer.material = binRenderer.material;
+            }
+        }
     }
 
     public void EmptyBin()
     {
         isEmpty = true;
-        UpdateColor();
+        UpdateMaterial();
         StartCoroutine(ResetBinAfterDelay());
     }
 
@@ -31,7 +43,7 @@ public class TrashBin : MonoBehaviour
     {
         yield return new WaitForSeconds(15);
         isEmpty = false;
-        UpdateColor();
+        UpdateMaterial();
         OnStateChanged?.Invoke(this);
     }
 }

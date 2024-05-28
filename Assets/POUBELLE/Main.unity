@@ -256,6 +256,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ArPrefabs:
   - {fileID: 6929071808503534696, guid: e5689b37944b742eabf9c61325f63867, type: 3}
+  Truck: {fileID: 6181016480047201662, guid: bcf974a3a70334dc689fd3c398ebc791, type: 3}
 --- !u!1 &702413256
 GameObject:
   m_ObjectHideFlags: 0
@@ -529,79 +530,6 @@ MonoBehaviour:
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
   m_CancelButton: Cancel
---- !u!1001 &6410674434566192234
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 253024936135554949, guid: bcf974a3a70334dc689fd3c398ebc791,
-        type: 3}
-      propertyPath: agentSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 455871458772723105, guid: bcf974a3a70334dc689fd3c398ebc791,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 455871458772723105, guid: bcf974a3a70334dc689fd3c398ebc791,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 455871458772723105, guid: bcf974a3a70334dc689fd3c398ebc791,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 455871458772723105, guid: bcf974a3a70334dc689fd3c398ebc791,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 455871458772723105, guid: bcf974a3a70334dc689fd3c398ebc791,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 455871458772723105, guid: bcf974a3a70334dc689fd3c398ebc791,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 455871458772723105, guid: bcf974a3a70334dc689fd3c398ebc791,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 455871458772723105, guid: bcf974a3a70334dc689fd3c398ebc791,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 455871458772723105, guid: bcf974a3a70334dc689fd3c398ebc791,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 455871458772723105, guid: bcf974a3a70334dc689fd3c398ebc791,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4366111246946473595, guid: bcf974a3a70334dc689fd3c398ebc791,
-        type: 3}
-      propertyPath: m_Name
-      value: Truck
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: bcf974a3a70334dc689fd3c398ebc791, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -610,4 +538,3 @@ SceneRoots:
   - {fileID: 1075000276}
   - {fileID: 1323550134}
   - {fileID: 331264285}
-  - {fileID: 6410674434566192234}
