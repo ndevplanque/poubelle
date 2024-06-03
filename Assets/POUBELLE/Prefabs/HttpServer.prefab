@@ -44,3 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b6815e6907747548be230cd42eb038f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Trash:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
