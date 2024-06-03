@@ -9,7 +9,11 @@ public class HttpServer : MonoBehaviour
 {
     private HttpListener listener;
     private Thread listenerThread;
-
+    
+    public GameObject TrashS;
+	public GameObject TrashA;
+	public GameObject TrashL;
+	
     void Start()
     {
         listener = new HttpListener();
@@ -36,6 +40,11 @@ public class HttpServer : MonoBehaviour
 				{
 					case "/init":
 						if (request.HttpMethod == "POST") HandleInit(request, response);
+						else Send(response, HttpStatusCode.BadRequest, "Invalid method");
+						break;
+						
+					case "/update":
+						if (request.HttpMethod == "POST") HandleUpdate(request, response);
 						else Send(response, HttpStatusCode.BadRequest, "Invalid method");
 						break;
 
@@ -73,7 +82,24 @@ public class HttpServer : MonoBehaviour
 		using (var reader = new StreamReader(request.InputStream, request.ContentEncoding))
 		{
 			string body = reader.ReadToEnd();
-			Debug.Log($"Received: {body}");
+			
+			string[] payloads = body.Split(' ');
+			foreach (string payload in payloads)
+			{
+				UpdateTrash(payload);
+			}
+			
+			Send(response, HttpStatusCode.OK, "ok");
+		}
+	}
+	
+	private void HandleUpdate(HttpListenerRequest request, HttpListenerResponse response)
+	{
+		using (var reader = new StreamReader(request.InputStream, request.ContentEncoding))
+		{
+			string body = reader.ReadToEnd();
+
+			UpdateTrash(body);
 			
 			Send(response, HttpStatusCode.OK, "ok");
 		}
@@ -87,6 +113,44 @@ public class HttpServer : MonoBehaviour
 		var output = response.OutputStream;
 		output.Write(buffer, 0, buffer.Length);
 		output.Close();
-	}	
+	}
+	
+	private void UpdateTrash(string payload)
+	{
+		string[] data = payload.Split(':');
+		GetTrash(data[0]).GetComponent<TrashBin>().isEmpty = GetState(data[1]);
+		Debug.Log($"Trash {data[0]} set to state {data[1]}.");
+	}
+	
+	private GameObject GetTrash(string id)
+	{
+		switch(id)
+		{
+			case "S":
+				return TrashS;
+			case "A":
+				return TrashA;
+			case "L":
+				return TrashL;
+			default:
+				throw new Exception("No trash was found");
+		}
+	}
+	
+	private bool GetState(string state)
+	{
+		if (state == "1")
+		{
+			return true;
+		}
+		else if (state == "0")
+		{
+			return false;
+		}
+		else
+		{
+			throw new FormatException("The string is not a valid boolean.");
+		}
+	}
 }
 
