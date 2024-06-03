@@ -38,6 +38,12 @@ public class TrashBin : MonoBehaviour
         UpdateMaterial();
         StartCoroutine(ResetBinAfterDelay());
     }
+    
+    public void FillBin()
+    {
+        isEmpty = false;
+        UpdateMaterial();
+    }
 
     private IEnumerator ResetBinAfterDelay()
     {
