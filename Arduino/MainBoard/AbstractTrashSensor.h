@@ -21,9 +21,6 @@ public:
   String toString() {
     return String(this->id) + ":" + String(this->state) + (this->alertSent ? "!" : " ");
   };
-  void sendSensorState() {
-    NetworkFacade::sendSensorState(this->id, this->state);
-  }
 
 protected:
   AbstractTrashSensor() {}
