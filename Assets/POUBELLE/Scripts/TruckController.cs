@@ -7,21 +7,21 @@ public class TruckController : MonoBehaviour
     public float rotationSpeed = 2f; // Vitesse à laquelle le camion tourne
     public float reachThreshold = 0.1f;
     private readonly List<Transform> checkpoints = new();
-    private int currentCheckpointIndex;
+    private Transform currentCheckpoint;
+    private List<Transform> remainingCheckpoints = new();
 
     private void Start()
     {
         UpdateCheckpoints();
+        SetClosestCheckpoint();
     }
 
     private void Update()
     {
-        if (checkpoints.Count == 0) return;
-
-        var targetCheckpoint = checkpoints[currentCheckpointIndex];
+        if (currentCheckpoint == null || checkpoints.Count == 0) return;
 
         // Déplacement vers le checkpoint
-        var direction = (targetCheckpoint.position - transform.position).normalized;
+        var direction = (currentCheckpoint.position - transform.position).normalized;
         transform.position += direction * speed * Time.deltaTime;
 
         // Rotation fluide vers le checkpoint
@@ -29,8 +29,11 @@ public class TruckController : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
 
         // Vérifier si le camion est suffisamment proche du checkpoint
-        if (Vector3.Distance(transform.position, targetCheckpoint.position) < reachThreshold)
-            currentCheckpointIndex = (currentCheckpointIndex + 1) % checkpoints.Count;
+        if (Vector3.Distance(transform.position, currentCheckpoint.position) < reachThreshold)
+        {
+            HandleCheckpointReached();
+            SetClosestCheckpoint();
+        }
     }
 
     private void OnDrawGizmos()
@@ -46,6 +49,39 @@ public class TruckController : MonoBehaviour
 
         foreach (var checkpointObject in checkpointObjects) checkpoints.Add(checkpointObject.transform);
 
-        currentCheckpointIndex = 0;
+        ResetRemainingCheckpoints();
+    }
+
+    private void SetClosestCheckpoint()
+    {
+        if (remainingCheckpoints.Count == 0) ResetRemainingCheckpoints();
+
+        var closestDistance = Mathf.Infinity;
+        Transform closestCheckpoint = null;
+
+        foreach (var checkpoint in remainingCheckpoints)
+        {
+            var distance = Vector3.Distance(transform.position, checkpoint.position);
+            if (distance < closestDistance)
+            {
+                closestDistance = distance;
+                closestCheckpoint = checkpoint;
+            }
+        }
+
+        currentCheckpoint = closestCheckpoint;
+
+        if (currentCheckpoint != null) remainingCheckpoints.Remove(currentCheckpoint);
+    }
+
+    private void HandleCheckpointReached()
+    {
+        if (currentCheckpoint != null && remainingCheckpoints.Contains(currentCheckpoint))
+            remainingCheckpoints.Remove(currentCheckpoint);
+    }
+
+    private void ResetRemainingCheckpoints()
+    {
+        remainingCheckpoints = new List<Transform>(checkpoints);
     }
 }
