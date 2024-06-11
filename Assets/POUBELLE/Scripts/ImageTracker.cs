@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
@@ -11,8 +10,8 @@ public class ImageTracker : MonoBehaviour
 
     private readonly List<GameObject> ARObjects = new();
     private ARTrackedImageManager trackedImages;
+    private TruckController truckController; // Reference to the truck's controller script
     private bool truckInitialized;
-    private MoveToPoints truckMovement;
 
     private void Awake()
     {
@@ -35,14 +34,8 @@ public class ImageTracker : MonoBehaviour
         foreach (var arPrefab in ArPrefabs)
             if (trackedImage.referenceImage.name == arPrefab.name)
             {
-                Debug.Log("Trackable image found: " + trackedImage.referenceImage.name);
+                Debug.Log($"Trackable image found: {trackedImage.referenceImage.name}");
                 var newPrefab = Instantiate(arPrefab, trackedImage.transform);
-
-                // Build the NavMesh
-                newPrefab.GetComponent<NavMeshSurface>()?.BuildNavMesh();
-
-                var trashBins = FindAllTrashObjects(newPrefab);
-                foreach (var bin in trashBins) bin.OnStateChanged += HandleBinStateChanged;
 
                 ARObjects.Add(newPrefab);
 
@@ -51,6 +44,11 @@ public class ImageTracker : MonoBehaviour
                 {
                     InitializeTruck(newPrefab);
                     truckInitialized = true;
+                }
+                else
+                {
+                    // Update checkpoints in the truck controller if truck already initialized  
+                    truckController.UpdateCheckpoints();
                 }
             }
 
@@ -62,39 +60,11 @@ public class ImageTracker : MonoBehaviour
 
     private void InitializeTruck(GameObject parentObject)
     {
-        // Instantiate the truck prefab at the same position as the first tracked AR prefab
+        // Instantiate the truck prefab at the same position as the first tracked AR prefab  
         var truckInstance = Instantiate(Truck, parentObject.transform.position, parentObject.transform.rotation);
-        truckMovement = truckInstance.GetComponent<MoveToPoints>();
 
-        // Set initial destinations for the truck  
-        var bins = FindAllTrashObjects(parentObject);
-        truckMovement.SetNewDestinations(bins.FindAll(bin => !bin.isEmpty));
-    }
-
-    // Function to search for all TrashBin objects recursively  
-    private List<TrashBin> FindAllTrashObjects(GameObject parentObject)
-    {
-        var trashBins = new List<TrashBin>();
-        var queue = new Queue<Transform>();
-        queue.Enqueue(parentObject.transform);
-
-        while (queue.Count > 0)
-        {
-            var current = queue.Dequeue();
-            var trashBin = current.GetComponent<TrashBin>();
-
-            if (trashBin != null) trashBins.Add(trashBin);
-
-            foreach (Transform child in current) queue.Enqueue(child);
-        }
-
-        return trashBins;
-    }
-
-    // Event handler for bin state changes  
-    private void HandleBinStateChanged(TrashBin bin)
-    {
-        var bins = FindAllTrashObjects(gameObject);
-        truckMovement.SetNewDestinations(bins.FindAll(b => !b.isEmpty));
+        // Get the truck controller component and update its checkpoints list
+        truckController = truckInstance.GetComponent<TruckController>();
+        truckController.UpdateCheckpoints();
     }
 }

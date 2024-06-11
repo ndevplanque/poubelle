@@ -163,7 +163,7 @@ PlayerSettings:
   applicationIdentifier:
     Android: com.unity.template.ar_mobile
     Standalone: com.unity.template.ar-mobile
-    iPhone: com.unity.epitech.trash
+    iPhone: com.unity.epitech.trashapp
   buildNumber:
     Bratwurst: 0
     Standalone: 0

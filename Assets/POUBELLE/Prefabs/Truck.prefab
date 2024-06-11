@@ -9,8 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2501809998825750141}
-  - component: {fileID: 4441454378193996414}
-  - component: {fileID: 4735508015009697198}
+  - component: {fileID: 2658895471994594877}
   m_Layer: 0
   m_Name: Truck
   m_TagString: Untagged
@@ -28,35 +27,13 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5751522644560830703}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!195 &4441454378193996414
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6181016480047201662}
-  m_Enabled: 1
-  m_AgentTypeID: -334000983
-  m_Radius: 0.1
-  m_Speed: 1
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 0.2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
---- !u!114 &4735508015009697198
+--- !u!114 &2658895471994594877
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -65,9 +42,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6181016480047201662}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20825cb1fd36145618930d0afeeecbdb, type: 3}
+  m_Script: {fileID: 11500000, guid: 819ba10866663468aa11d261adba4415, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 0.15
+  rotationSpeed: 5
+  reachThreshold: 0.01
 --- !u!1001 &5747067848450884353
 PrefabInstance:
   m_ObjectHideFlags: 0
