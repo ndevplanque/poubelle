@@ -255,8 +255,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ArPrefabs:
-  - {fileID: 1308338116704907953, guid: e5689b37944b742eabf9c61325f63867, type: 3}
-  - {fileID: 1308338116704907953, guid: f750e6dca15c94e148bd7a3a586272e9, type: 3}
+  - {fileID: 5539630540398925964, guid: 4c07f4ab4ff00413bac66136e83ee6db, type: 3}
+  - {fileID: 7250895597066605309, guid: f750e6dca15c94e148bd7a3a586272e9, type: 3}
+  - {fileID: 2715654979791748971, guid: 6b693e07ebe5447fa93a0e773bc11df1, type: 3}
   Truck: {fileID: 6181016480047201662, guid: bcf974a3a70334dc689fd3c398ebc791, type: 3}
 --- !u!1 &702413256
 GameObject:

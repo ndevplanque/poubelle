@@ -7,6 +7,8 @@ public class TrashBin : MonoBehaviour
     public bool isEmpty;
     private Renderer binRenderer;
     [SerializeField]
+    private int id;
+    [SerializeField]
     private Material fullBinMaterial;
     [SerializeField]
     private Material emptyBinMaterial;
@@ -47,7 +49,7 @@ public class TrashBin : MonoBehaviour
 
     private IEnumerator ResetBinAfterDelay()
     {
-        yield return new WaitForSeconds(15);
+        yield return new WaitForSeconds(60);
         isEmpty = false;
         UpdateMaterial();
         OnStateChanged?.Invoke(this);
