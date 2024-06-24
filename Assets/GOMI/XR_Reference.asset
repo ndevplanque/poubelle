@@ -1,0 +1,109 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 848409ee8ba454f42a5ddff137688a27, type: 3}
+  m_Name: XR_Reference
+  m_EditorClassIdentifier: 
+  m_GuidLow: 4634969122733396036
+  m_GuidHigh: 17344938098443679618
+  m_DataStore:
+    m_Storage: []
+  m_Images:
+  - m_SerializedGuid:
+      m_GuidLow: 5325240590790525759
+      m_GuidHigh: 4414423039355862657
+    m_SerializedTextureGuid:
+      m_GuidLow: 3794325899438352961
+      m_GuidHigh: 12922378030773203593
+    m_Size: {x: 0.1, y: 0.1}
+    m_SpecifySize: 1
+    m_Name: CHUNK_01
+    m_Texture: {fileID: 2800000, guid: 66166a41274d34a889728c715a8255b3, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 5112346228407385001
+      m_GuidHigh: 17717622554365339543
+    m_SerializedTextureGuid:
+      m_GuidLow: 1490895002997910003
+      m_GuidHigh: 9366139020407795881
+    m_Size: {x: 0.1, y: 0.1}
+    m_SpecifySize: 1
+    m_Name: CHUNK_02
+    m_Texture: {fileID: 2800000, guid: 2b1869f3b91b14b0a9f054acd035fb81, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 5080115341760153751
+      m_GuidHigh: 16133888521227106996
+    m_SerializedTextureGuid:
+      m_GuidLow: 17605212868033303904
+      m_GuidHigh: 8511537472705584057
+    m_Size: {x: 0.1, y: 0.1}
+    m_SpecifySize: 1
+    m_Name: CHUNK_03
+    m_Texture: {fileID: 2800000, guid: ba42d56047d3f452b9db0a413c0e1f76, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 4645443739634458864
+      m_GuidHigh: 11491995930450322577
+    m_SerializedTextureGuid:
+      m_GuidLow: 1469098903897387030
+      m_GuidHigh: 10169671186342089528
+    m_Size: {x: 0.1, y: 0.1}
+    m_SpecifySize: 1
+    m_Name: CHUNK_04
+    m_Texture: {fileID: 2800000, guid: 62b8301649ab14633813721010ee218d, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 4979750698317623531
+      m_GuidHigh: 17851212177734709950
+    m_SerializedTextureGuid:
+      m_GuidLow: 11871964744682243603
+      m_GuidHigh: 2085598507124954938
+    m_Size: {x: 0.1, y: 0.1}
+    m_SpecifySize: 1
+    m_Name: CHUNK_05
+    m_Texture: {fileID: 2800000, guid: f0bf0613b108a4c13a9744d1ca88f11c, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 5237450955168893524
+      m_GuidHigh: 16480585643390944679
+    m_SerializedTextureGuid:
+      m_GuidLow: 1448595086253701080
+      m_GuidHigh: 338347747132997817
+    m_Size: {x: 0.1, y: 0.1}
+    m_SpecifySize: 1
+    m_Name: CHUNK_06
+    m_Texture: {fileID: 2800000, guid: 538737d8718e141ab9806abe7b0db204, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 5053917336087200151
+      m_GuidHigh: 17336795383263017375
+    m_SerializedTextureGuid:
+      m_GuidLow: 10668158812731983270
+      m_GuidHigh: 4303452467774943481
+    m_Size: {x: 0.1, y: 0.1}
+    m_SpecifySize: 1
+    m_Name: CHUNK_07
+    m_Texture: {fileID: 2800000, guid: f857c5a6e9ea940cf9f0800138efb83b, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 5064778935677590349
+      m_GuidHigh: 4573229225928399278
+    m_SerializedTextureGuid:
+      m_GuidLow: 17611217830228535255
+      m_GuidHigh: 18200260167895193609
+    m_Size: {x: 0.1, y: 0.1}
+    m_SpecifySize: 1
+    m_Name: CHUNK_08
+    m_Texture: {fileID: 2800000, guid: f0cc27d79d4ef4670998158f315094fc, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 5209881610536790383
+      m_GuidHigh: 15717377842274855823
+    m_SerializedTextureGuid:
+      m_GuidLow: 16483334982585662421
+      m_GuidHigh: 14057729438289855304
+    m_Size: {x: 0.1, y: 0.1}
+    m_SpecifySize: 1
+    m_Name: CHUNK_09
+    m_Texture: {fileID: 2800000, guid: 8ec9bbd591d5e4c04883d16d711617c3, type: 3}
