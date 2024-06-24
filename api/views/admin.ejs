@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Admin</title>
+</head>
+<body>
+
+<% Object.keys(trashes).forEach(key => { %>
+<p>Trash <%= key %> (<%= trashes[key].open ? "ouverte" : "fermée" %>, <%= trashes[key].full ? "pleine" : "vide" %>)</p>
+<form action="/trash/<%= key %>/open" method="POST">
+    <input type="hidden" name="redirect" value="true"/>
+    <button type="submit">Ouvrir</button>
+</form>
+<form action="/trash/<%= key %>/close" method="POST">
+    <input type="hidden" name="redirect" value="true"/>
+    <button type="submit">Fermer</button>
+</form>
+<form action="/trash/<%= key %>/full" method="POST">
+    <input type="hidden" name="redirect" value="true"/>
+    <button type="submit">Remplir</button>
+</form>
+<form action="/trash/<%= key %>/empty" method="POST">
+    <input type="hidden" name="redirect" value="true"/>
+    <button type="submit">Vider</button>
+</form>
+<% }); %>
+
+</body>
+</html>
