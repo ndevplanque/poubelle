@@ -1,0 +1,15 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "Nicolas DELPLANQUE",
+  "license": "MIT",
+  "description": "API pour la communication arduino-unity dans le projet POUBELLE",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
