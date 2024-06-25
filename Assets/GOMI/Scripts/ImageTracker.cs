@@ -69,7 +69,13 @@ public class ImageTracker : MonoBehaviour
         foreach (var trackedImage in eventArgs.updated)
         foreach (var arObject in ARObjects)
             if (arObject.name == trackedImage.referenceImage.name)
+            {
+                var updatedPosition = new Vector3(trackedImage.transform.position.x, arObject.transform.position.y,
+                    trackedImage.transform.position.z);
+                arObject.transform.position = updatedPosition;
+                arObject.transform.rotation = trackedImage.transform.rotation;
                 arObject.SetActive(trackedImage.trackingState == TrackingState.Tracking);
+            }
     }
 
     private void OnPlanesChanged(ARPlanesChangedEventArgs eventArgs)
@@ -80,7 +86,7 @@ public class ImageTracker : MonoBehaviour
             {
                 // Detect the floor by assuming the first detected plane is the floor.
                 // You might want to refine this logic to ensure you are detecting the correct floor plane.
-                floorYPosition = plane.transform.position.y;
+                floorYPosition = plane.transform.position.y + 0.01f;
                 floorDetected = true;
                 Debug.Log("Floor detected at height: " + floorYPosition);
             }

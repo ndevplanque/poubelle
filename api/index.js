@@ -5,9 +5,12 @@ const port = 3000
 app.set('view engine', 'ejs');
 
 let trashes = {
-  1: {"open": false, "full": false},
-  2: {"open": false, "full": false},
-  3: {"open": false, "full": false},
+  1: {"open": false, "full": true},
+  2: {"open": false, "full": true},
+  3: {"open": false, "full": true},
+  4: {"open": false, "full": true},
+  5: {"open": false, "full": true},
+  6: {"open": false, "full": true},
 };
 
 app.use(express.json());
@@ -46,6 +49,7 @@ app.post('/trash/:id/close', (req, res) => {
 })
 
 app.post('/trash/:id/full', (req, res) => {
+  console.log("Filling trash", req.params.id)
   trashes[req.params.id].full = true
   if (req.body.redirect) {
     return adminPage(res);
@@ -54,6 +58,7 @@ app.post('/trash/:id/full', (req, res) => {
 })
 
 app.post('/trash/:id/empty', (req, res) => {
+  console.log("Emptying trash", req.params.id)
   trashes[req.params.id].full = false
   if (req.body.redirect) {
     return adminPage(res);

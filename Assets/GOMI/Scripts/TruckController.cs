@@ -153,6 +153,7 @@ public class TruckController : MonoBehaviour
         yield return new WaitForSeconds(stopDuration);
 
         trashBin.EmptyBin(); // Vider la poubelle
+        yield return new WaitUntil(() => trashBin.isEmpty);
 
         isStopped = false; // Reprendre le mouvement
     }
