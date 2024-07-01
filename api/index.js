@@ -3,6 +3,9 @@ const app = express()
 const port = 3000
 
 app.set('view engine', 'ejs');
+app.use(express.static('public'));
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 
 let trashes = {
   1: {"open": false, "full": true},
@@ -12,9 +15,6 @@ let trashes = {
   5: {"open": false, "full": true},
   6: {"open": false, "full": true},
 };
-
-app.use(express.json());
-app.use(express.urlencoded({extended: true}));
 
 function adminPage(res) {
   res.render('admin', {trashes});
