@@ -13,7 +13,7 @@ Ultrasonic::Ultrasonic(char id, float distanceThreshold, uint8_t trigPin, uint8_
     Serial.println("Ultrasonic " + String(this->trigPin) + "/" + String(this->echoPin) + " started");
 }
 
-void Ultrasonic::updateState() {
+void Ultrasonic::updateState(bool debug) {
     if (!this->started) {
         Serial.println("Ultrasonic did not start");
         return;
@@ -30,4 +30,8 @@ void Ultrasonic::updateState() {
 
     this->lastState = this->state;
     this->state = distance > this->distanceThreshold;
+
+    if (debug) {
+      Serial.println(String(this->id) + ": " + String(distance) + "(" + String(this->state) + ")");
+    }
 }

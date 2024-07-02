@@ -56,6 +56,6 @@ void processSensor(AbstractTrashSensor* sensor) {
   sensor->updateState();
 
   if(sensor->stateChanged()) {
-    NetworkFacade::sendSensorState(this->id, this->state);
+    NetworkFacade::sendSensorState(sensor->getId(), sensor->getState());
   }
 }

@@ -6,7 +6,7 @@
 class Ultrasonic : public AbstractTrashSensor {
 public:
     Ultrasonic(char id, float distanceThreshold, uint8_t trigPin, uint8_t echoPin);
-    void updateState() override;
+    void updateState(bool debug) override;
 
 private:
     float distanceThreshold;

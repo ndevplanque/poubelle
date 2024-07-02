@@ -24,7 +24,7 @@ Accelerometer::Accelerometer(char id, float threshold, bfs::Mpu6500::I2cAddr pin
     Serial.println("Accelerometer started");
 }
 
-void Accelerometer::updateState() {
+void Accelerometer::updateState(bool debug) {
     if (!this->started) {
         Serial.println("Accelerometer did not start");
         return;
@@ -33,7 +33,14 @@ void Accelerometer::updateState() {
         Serial.println("Reading error for Accelerometer");
         return;
     }
+
+    float value = mpu6500.accel_z_mps2();
+
     this->lastState = this->state;
-    this->state = mpu6500.accel_z_mps2() >= this->threshold;
+    this->state = value >= this->threshold;
+
+    if (debug) {
+      Serial.println(String(this->id) + ": " + String(value) + "(" + String(this->state) + ")");
+    }
 }
 

@@ -9,11 +9,18 @@ PhotoResistor::PhotoResistor(char id, float threshold, uint8_t pin) {
     Serial.println("PhotoResistor " + String(this->pin) + " started");
 }
 
-void PhotoResistor::updateState() {
+void PhotoResistor::updateState(bool debug) {
     if (!this->started) {
         Serial.println("PhotoResistor did not start");
         return;
     }
+
+    float value = analogRead(this->pin);
+
     this->lastState = this->state;
-    this->state = analogRead(this->pin) < this->threshold;
+    this->state = value < this->threshold;
+
+    if (debug) {
+      Serial.println(String(this->id) + ": " + String(value) + "(" + String(this->state) + ")");
+    }
 }

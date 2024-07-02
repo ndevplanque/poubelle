@@ -7,8 +7,11 @@
 
 class AbstractTrashSensor {
 public:
-  virtual void updateState() = 0;
+  virtual void updateState(bool debug = false) = 0;
   
+  char getId() {
+    return this->id;
+  }
   bool getState() {
     return this->state;
   }

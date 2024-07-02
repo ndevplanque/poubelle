@@ -6,7 +6,7 @@
 class PhotoResistor : public AbstractTrashSensor {
 public:
     PhotoResistor(char id, float threshold, uint8_t pin);
-    void updateState() override;
+    void updateState(bool debug) override;
 
 private:
     float threshold;
