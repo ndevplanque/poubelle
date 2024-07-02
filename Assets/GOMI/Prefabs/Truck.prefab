@@ -48,7 +48,7 @@ MonoBehaviour:
   speed: 0.15
   rotationSpeed: 5
   reachThreshold: 0.01
-  disableDuration: 10
+  disableDuration: 3
   stopDuration: 3
   trashDetectionRadius: 2
 --- !u!1001 &5747067848450884353
